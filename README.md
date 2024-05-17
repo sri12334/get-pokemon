@@ -20,7 +20,7 @@
 
 ## Screenshots
 
-![Example screenshot]()
+![Example screenshot](./assets/pageScreenshot.png)
 
 ## Technologies
 
@@ -35,9 +35,22 @@ clone the repo and start using the stop watch.
 
 ## Code Examples
 
-```js
+const getPokemon = async (id) => {
+    try {
+        const url = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
 
-```
+        if (!url.ok) {
+            throw new Error('Pokemon not found');
+        }
+        const data = await url.json();
+        return data;
+    } catch (err) {
+        console.log(`There was an error fetching the Pokemon: ${err}`);
+        return null;
+    }
+}
+
+export default getPokemon;
 
 ## Features
 
@@ -54,7 +67,7 @@ To-do list:
 
 ## Status
 
-Project is: _in progress_
+Project is: done
 
 ## Inspiration
 
